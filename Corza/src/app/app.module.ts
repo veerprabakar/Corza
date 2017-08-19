@@ -9,16 +9,8 @@ import { ProductListComponent } from './products/product-list.component';
 import { ConvertToSapcePipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from './products/product-detail.component';
-
-
-// export const firebaseConfig = {
-//   apiKey: "AIzaSyAYXofL9J3JIlcTpVwRQAHpAMV8f2ICm2k",
-//   authDomain: "corza-b04c3.firebaseapp.com",
-//   databaseURL: "https://corza-b04c3.firebaseio.com",
-//   projectId: "corza-b04c3",
-//   storageBucket: "corza-b04c3.appspot.com",
-//   messagingSenderId: "151502071408"
-// };
+import { ProductGuardService } from './products/product-guard.service';
+import { CanActivate } from '@angular/router/src';
 
 @NgModule({
   declarations: [
@@ -34,12 +26,13 @@ import { ProductDetailComponent } from './products/product-detail.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'products', component: ProductListComponent },
-      { path: 'products/:id', component: ProductDetailComponent },
-      { path: '', component: ProductDetailComponent },
-      { path: '**', component: ProductDetailComponent }
+      { path: 'products/:id', canActivate: [ProductGuardService],
+                              component: ProductDetailComponent },
+      { path: '', component: ProductListComponent },
+      { path: '**', component: ProductListComponent }
     ])
   ],
-  providers: [],
+  providers: [ProductGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
