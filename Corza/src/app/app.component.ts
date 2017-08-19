@@ -1,15 +1,23 @@
-import{ Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductService } from './products/product.service';
 
 @Component({
-  selector: 'cz-root',
-  template: `<div>
-      <h1>Corza</h1>
-      <pm-products></pm-products>
-  </div>
-  `,
-  providers:[ProductService]
+  selector: 'pm-root',
+  template: `<h1>Corza</h1>
+            <div>
+            <nav class='navbar navbar-default'>
+            <div class='container-fluid'>
+              <a class='navbar-brand'>{{pageTitile}}</a>
+              <ul class='nav navbar-nav'>
+                <li><a [routerLink]="['/welcome']">Home</a></li>
+                <li><a [routerLink]="['/products']">Product List</a></li>
+              </ul>
+            </div>
+        </nav>
+        <div class='container'> <router-outlet></router-outlet>  </div>
+        </div>`,
+  providers: [ProductService]
 })
-export class AppComponent{
+export class AppComponent {
   pageTitle: string = 'Corza Company';
 }

@@ -4,14 +4,13 @@ import { ProductService } from './product.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'pm-products',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product.list.componenet.css']
 })
 export class ProductListComponent implements OnInit {
   pageTitle: string = 'Product List';
-  imageWidth: number = 50;
-  imageHeight: number = 50;
+  imageWidth: number = 20;
+  imageHeight: number = 20;
   showImage: boolean = false;
   imageMargin: number = 2;
   _listFilter: string;
